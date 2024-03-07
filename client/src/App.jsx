@@ -9,6 +9,7 @@ import axios from "axios";
 import { server } from "./server";
 import Store from "./redux/store";
 import { loadUser } from "./redux/actions/user";
+import Profile from "./pages/Profile";
 function App() {
   useEffect(() => {
     Store.dispatch(loadUser());
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/sign-up" element={<SignupPage />} />
+        <Route path="/profile" element={<Profile />} />
         <Route
           path="/activation/:activation_token"
           element={<ActivationPage />}
