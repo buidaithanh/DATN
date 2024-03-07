@@ -12,9 +12,12 @@ import {
 } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
 import { MdWorkspacePremium } from "react-icons/md";
-const Header = () => {
+// eslint-disable-next-line react/prop-types
+const Header = ({ currentUser }) => {
+  console.log("user", currentUser);
   return (
     <header>
+      {/* <img src={currentUser.avatar} alt="" /> */}
       <div className="top">
         <a href="">
           <FaPhoneAlt />
@@ -52,8 +55,17 @@ const Header = () => {
           <FaCloudUploadAlt className="mr iconx2" />
           UPLOAD
         </button>
-        <p>hi dai thanh</p>
-        <img src="/svg/avatar.svg" alt="" />
+        <p>Hi {currentUser.name}</p>
+        {currentUser ? (
+          <img
+            style={{ width: "40px", height: "40px", borderRadius: "50px" }}
+            src={`http://localhost:3003/${currentUser?.avatar}`}
+            alt=""
+          />
+        ) : (
+          <img src="/svg/avatar.svg" alt="" />
+        )}
+
         <a href="">
           <FaAngleDown />
         </a>
@@ -73,7 +85,7 @@ const Header = () => {
           <a href="">LIEN HE</a>
         </li>
         <li>
-          <a href="">NANG CAP</a>
+          <a href="">NANG CAP</a>{" "}
         </li>
       </ul>
     </header>

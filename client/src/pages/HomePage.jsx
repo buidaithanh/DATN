@@ -5,10 +5,13 @@ import "../styles/HomePage.scss";
 import { documents } from "../../data/index";
 import { FaArrowRight } from "react-icons/fa";
 import RecentDoc from "../components/RecentDoc";
+import { useSelector } from "react-redux";
 const HomePage = () => {
+  const user = useSelector((state) => state.user.user);
+  console.log(user);
   return (
     <div>
-      <Header />
+      <Header currentUser={user} />
       <div className="slider">
         <div className="content">
           <h2>
