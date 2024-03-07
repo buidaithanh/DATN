@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import ContainerDoc from "../components/ContainerDoc";
 import "../styles/HomePage.scss";
 import { documents } from "../../data/index";
+import { FaArrowRight } from "react-icons/fa";
+import RecentDoc from "../components/RecentDoc";
 const HomePage = () => {
   return (
     <div>
@@ -110,6 +112,16 @@ const HomePage = () => {
           />
         </div>
         <ContainerDoc data={documents} />
+        <div style={{ textAlign: "right" }}>
+          <a
+            style={{ textDecoration: "none", color: "#ed553b" }}
+            href=""
+            className="mr"
+          >
+            Xem Thêm
+          </a>
+          <FaArrowRight style={{ color: "#ed553b" }} />
+        </div>
       </div>
       <div className="featured-document">
         <div className="separator" style={{ alignItems: "center" }}>
@@ -137,7 +149,18 @@ const HomePage = () => {
           />
         </div>
         <ContainerDoc data={documents} />
+        <div style={{ textAlign: "right" }}>
+          <a
+            style={{ textDecoration: "none", color: "#ed553b" }}
+            href=""
+            className="mr"
+          >
+            Xem Thêm
+          </a>
+          <FaArrowRight style={{ color: "#ed553b" }} />
+        </div>
       </div>
+      <RecentDoc data={documents} />
     </div>
   );
 };

@@ -1,0 +1,98 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "kinhte item1 item2 item3"
+    "kinhte item4 item5 item6"
+    "kinhte item7 item8 item9";
+}
+
+.kinhte {
+  justify-self: center;
+  align-self: center;
+  grid-area: kinhte;
+  background-color: #0a1d56;
+  width: 100%;
+  height: 100%;
+  color: white;
+  align-items: center;
+  text-align: center;
+  display: block;
+}
+
+.item1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "tenfile tenfile tenfile"
+    "date date views"
+    "user user download";
+  grid-area: item1;
+  margin-left: 20px;
+  box-sizing: border-box;
+}
+
+.tenfile {
+  justify-self: center;
+  align-self: center;
+  grid-area: tenfile;
+  font-weight: 700;
+}
+
+.date {
+  grid-area: date;
+  color: #ccc;
+}
+
+.views {
+  grid-area: views;
+  color: #ccc;
+}
+
+.user {
+  grid-area: user;
+  color: #ccc;
+}
+
+.download {
+  grid-area: download;
+  color: #ccc;
+}
+
+.item2 {
+  grid-area: item2;
+}
+
+.item3 {
+  grid-area: item3;
+}
+
+.item4 {
+  grid-area: item4;
+}
+
+.item5 {
+  grid-area: item5;
+}
+
+.item6 {
+  grid-area: item6;
+}
+
+.item7 {
+  grid-area: item7;
+}
+
+.item8 {
+  grid-area: item8;
+}
+
+.item9 {
+  grid-area: item9;
+}
