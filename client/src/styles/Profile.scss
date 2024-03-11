@@ -1,0 +1,64 @@
+.group-profile{
+    display: flex;
+}
+.container {
+    min-width: 600px;
+    background-color: white  ;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-left: 100px; 
+  }
+  .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .form-group label {
+    width: 150px;
+    margin-right: 10px;
+  }
+  .form-group input[type="text"],
+  .form-group input[type="button"],
+  .form-group select {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+  }
+  .form-group input[type="button"]:hover,
+  .form-group input[type="button"]:focus {
+    background-color: #4CAF50; /* Màu xanh khi hover hoặc focus */
+    color: white; /* Màu chữ trắng khi hover hoặc focus */
+  }
+  .form-group .button-label {
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer; /* Biến con trỏ thành hình bàn tay khi hover */
+    user-select: none; /* Ngăn chặn việc chọn văn bản trong button-label */
+  }
+  .form-group .button-label:hover,
+  .form-group .button-label:focus {
+    background-color: #4CAF50; /* Màu xanh khi hover hoặc focus */
+    color: white; /* Màu chữ trắng khi hover hoặc focus */
+  }
+  .form-group .info-label {
+    cursor: pointer;
+    color: #007bff; /* Màu của văn bản khi không hover */
+    transition: color 0.3s; /* Hiệu ứng màu khi hover */
+  }
+  .btn-update{
+    width: 105px;
+    height: 40px;
+    background-color: #007bfe;
+    color: white;
+    margin: auto;
+    border: none;
+  }
