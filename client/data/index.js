@@ -1,7 +1,7 @@
 export const documents = [
   {
     image: "../public/png/giaotrinhPerl.png",
-    title: "ngon ngu perl",
+    title: "nghiên cứu giao động tụ do cua tu....",
     createdAt: "17/01/2024",
     views: 250,
     uploadBy: "nguyendai1",
@@ -9,7 +9,7 @@ export const documents = [
   },
   {
     image: "../public/png/ba.png",
-    title: "ngon ngu perl",
+    title: "nghiên cứu giao động tụ do cua tu....",
     createdAt: "17/01/2024",
     views: 250,
     uploadBy: "nguyendai1",
@@ -17,7 +17,7 @@ export const documents = [
   },
   {
     image: "../public/png/hoachdinh.png",
-    title: "ngon ngu perl",
+    title: "nghiên cứu giao động tụ do cua tu....",
     createdAt: "17/01/2024",
     views: 250,
     uploadBy: "nguyendai1",
@@ -25,7 +25,7 @@ export const documents = [
   },
   {
     image: "../public/png/java.png",
-    title: "ngon ngu perl",
+    title: "nghiên cứu giao động tụ do cua tu....",
     createdAt: "17/01/2024",
     views: 250,
     uploadBy: "nguyendai1",
@@ -33,7 +33,7 @@ export const documents = [
   },
   {
     image: "../public/png/ketoan.png",
-    title: "ngon ngu perl",
+    title: "nghiên cứu giao động tụ do cua tu....",
     createdAt: "17/01/2024",
     views: 250,
     uploadBy: "nguyendai1",
@@ -41,7 +41,7 @@ export const documents = [
   },
   {
     image: "../public/png/quantrimang.png",
-    title: "ngon ngu perl",
+    title: "nghiên cứu giao động tụ do cua tu....",
     createdAt: "17/01/2024",
     views: 250,
     uploadBy: "nguyendai1",
@@ -50,7 +50,7 @@ export const documents = [
   {
     image: "../public/png/vinmart.png",
     title: "ngon ngu perl",
-    createAt: "17/01/2024",
+    createdAt: "17/01/2024",
     views: 250,
     uploadBy: "nguyendai1",
     downloads: 234,

@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/user");
+const docRoute = require("./routes/document");
 const ErrorHandler = require("./middlewares/error");
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
@@ -38,6 +39,7 @@ app.use(
   })
 );
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/doc", docRoute);
 
 app.use(ErrorHandler);
 //create  server

@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Header.scss";
+import { Link } from "react-router-dom";
 import {
   FaPhoneAlt,
   FaFacebookF,
@@ -53,9 +54,14 @@ const Header = ({ currentUser }) => {
         </a>
         <button className="upload">
           <FaCloudUploadAlt className="mr iconx2" />
-          UPLOAD
+          <Link
+            style={{ color: "white", textDecoration: "none" }}
+            to="/upload-file"
+          >
+            UPLOAD
+          </Link>
         </button>
-        <p>Hi {currentUser.name}</p>
+        <p>Hi {currentUser?.name}</p>
         {currentUser ? (
           <img
             style={{ width: "40px", height: "40px", borderRadius: "50px" }}

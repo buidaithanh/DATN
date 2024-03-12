@@ -1,6 +1,5 @@
 .slider {
   height: 400px;
-  margin-top: 30px;
   display: flex;
   justify-content: center;
   gap: 100px;
@@ -17,6 +16,8 @@
   }
 }
 .explore-docs {
+  padding: 25px;
+  background-color: #fff;
   text-align: center;
   .items-category {
     display: flex;
@@ -37,12 +38,14 @@
 }
 
 .weekly-review,
-.featured-document {
+.featured-document,
+.recent-doc {
+  background-color: #fff;
+  padding: 25px;
   h1 {
     color: #ed553b;
   }
   .separator {
-    margin-top: 60px;
     display: flex;
     justify-content: space-between;
     align-content: center;
