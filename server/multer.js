@@ -1,5 +1,4 @@
 const multer = require("multer");
-
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
     cb(null, "uploads/");
@@ -7,8 +6,26 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const filename = file.originalname.split(".")[0];
-    cb(null, filename + "-" + uniqueSuffix + ".png");
+    if (file.mimetype === "application/pdf") {
+      cb(null, filename + ".pdf");
+    } else {
+      cb(null, filename + "-" + uniqueSuffix + ".png");
+    }
   },
 });
+//
+const fileFilter = function (req, file, cb) {
+  const allowedExtensions = ["jpg", "jpeg", "png", "pdf"];
+  const fileExtension = file.originalname.split(".").pop().toLowerCase();
 
-exports.upload = multer({ storage: storage });
+  if (!allowedExtensions.includes(fileExtension)) {
+    return cb(new Error("Only image and PDF files are allowed!"));
+  }
+
+  cb(null, true);
+};
+
+const limits = {
+  fileSize: 5 * 1024 * 1024, // 5 MB
+};
+exports.upload = multer({ storage: storage, fileFilter, limits });

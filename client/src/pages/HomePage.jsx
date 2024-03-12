@@ -6,6 +6,7 @@ import { documents } from "../../data/index";
 import { FaArrowRight } from "react-icons/fa";
 import RecentDoc from "../components/RecentDoc";
 import { useSelector } from "react-redux";
+import Chat from "../components/Chat";
 const HomePage = () => {
   const user = useSelector((state) => state.user.user);
   console.log(user);
@@ -31,7 +32,7 @@ const HomePage = () => {
         </div>
         <img src="/svg/slider.svg" alt="" />
       </div>
-      <div className="explore-docs mt-60">
+      <div className="explore-docs">
         <div className="dflex">
           <hr
             style={{
@@ -163,7 +164,35 @@ const HomePage = () => {
           <FaArrowRight style={{ color: "#ed553b" }} />
         </div>
       </div>
-      <RecentDoc data={documents} />
+
+      <div className="recent-doc">
+        <div className="separator" style={{ alignItems: "center" }}>
+          <hr
+            style={{
+              width: "26%",
+              height: "2px",
+              textAlign: "left",
+              marginLeft: 0,
+              marginRight: 10,
+              backgroundColor: "#ED553B",
+            }}
+          />
+          <h1>Tài Liệu Mới Đăng</h1>
+          <hr
+            style={{
+              height: "2px",
+              width: "26%",
+
+              textAlign: "left",
+              marginLeft: 0,
+              marginRight: 10,
+              backgroundColor: "#ED553B",
+            }}
+          />
+        </div>
+        <RecentDoc data={documents} />
+      </div>
+      <Chat />
     </div>
   );
 };

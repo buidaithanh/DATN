@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage, SignupPage, ActivationPage } from "./routes/Routes";
-import HomePage from "./pages/HomePage";
+import { HomePage, UploadFile } from "./pages";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
@@ -23,6 +23,7 @@ function App() {
           path="/activation/:activation_token"
           element={<ActivationPage />}
         />
+        <Route path="/upload-file" element={<UploadFile />} />
       </Routes>
       <ToastContainer
         position="top-right"
