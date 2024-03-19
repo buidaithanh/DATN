@@ -21,6 +21,7 @@ exports.isAdmin = (...roles) => {
         new ErrorHandler(`${req.user.role} can not access this resources!`)
       );
     }
+    console.log(req.user);
     next();
   };
 };

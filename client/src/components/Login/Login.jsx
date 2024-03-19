@@ -5,11 +5,15 @@ import "../../styles/Signup.scss";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  console.log(isAuthenticated);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
@@ -23,10 +27,11 @@ const Login = () => {
       )
       .then((res) => {
         toast.success("Login successful");
+
         navigate("/");
       })
       .catch((err) => {
-        toast.error(err.response.data.message);
+        toast.error(err.response?.data.message);
       });
   };
 

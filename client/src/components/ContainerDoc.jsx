@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineDateRange } from "react-icons/md";
-import { IoEyeOutline } from "react-icons/io5";
-import { FaRegUser, FaDownload } from "react-icons/fa";
+import { IoEyeOutline, IoCloudDownloadOutline } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa";
 import "../styles/ContainerDoc.scss";
 // eslint-disable-next-line react/prop-types
 const WeeklyView = ({ data }) => {
@@ -15,16 +15,19 @@ const WeeklyView = ({ data }) => {
         {document.map((doc, index) => {
           return (
             <div key={index} className="item">
-              <img src={doc.image} alt="" />
+              <img src={doc.image} alt="" className="image-doc" />
               <h4>{doc.title}</h4>
               <div className="dlfex">
-                <MdOutlineDateRange />{" "}
+                <MdOutlineDateRange className="secondary-color" />{" "}
                 <span className="mr">{doc.createdAt}</span>
-                <IoEyeOutline /> <span>{doc.views}</span>
+                <IoEyeOutline className="secondary-color" />{" "}
+                <span>{doc.views}</span>
               </div>
               <div className="dlfex">
-                <FaRegUser /> <span className="mr">{doc.uploadBy}</span>
-                <FaDownload /> <span>{doc.downloads}</span>
+                <FaRegUser className="secondary-color" />{" "}
+                <span className="mr">{doc.uploadBy}</span>
+                <IoCloudDownloadOutline className="secondary-color" />{" "}
+                <span>{doc.downloads}</span>
               </div>
             </div>
           );

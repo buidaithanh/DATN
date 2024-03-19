@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: calc(100% - 200px);
   margin: 0 auto;
 }
 .iconx2 {
@@ -19,6 +19,9 @@
 .mr {
   margin-right: 10px;
 }
+.ml {
+  margin-left: 10px;
+}
 .mt-40 {
   margin-top: 40px;
 }
@@ -28,8 +31,14 @@
 .mb-40 {
   margin-bottom: 40px;
 }
+.margin-auto {
+  margin: auto;
+}
 .primary-color {
   color: #ed553b;
+}
+.secondary-color {
+  color: #888888;
 }
 .btn-primary {
   background-color: #12ab7f;
