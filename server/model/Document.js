@@ -33,16 +33,24 @@ const documentSchema = new mongoose.Schema({
       },
     },
   ],
-  ratings: {
-    type: Number,
+  keyWord: {
+    type: String,
+    required: true,
   },
   uploadedBy: {
     type: String,
     required: true,
   },
+  nameUser: {
+    type: String,
+  },
   price: {
     type: Number,
     required: true,
+  },
+  preview: {
+    type: Number,
+    default: 0,
   },
   downloads: { type: Number, default: 0 },
   views: { type: Number, default: 0 },

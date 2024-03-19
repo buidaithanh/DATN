@@ -92,7 +92,6 @@ module.exports.login = async (req, res, next) => {
 
     sendToken(user, 201, res);
   } catch (error) {
-    console.log("chay vao day");
     return next(new ErrorHandler(error.message, 500));
   }
 };
@@ -113,7 +112,19 @@ module.exports.getUser = async (req, res, next) => {
     return next(new ErrorHandler(error.message, 500));
   }
 };
+// get user info
+module.exports.getUserInfo = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id);
 
+    res.status(201).json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    return next(new ErrorHandler(error.message, 500));
+  }
+};
 // log out user
 module.exports.logout = (req, res, next) => {
   try {

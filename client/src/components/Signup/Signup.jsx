@@ -18,7 +18,6 @@ const Signup = () => {
     const file = e.target.files[0];
     setAvatar(file);
   };
-  console.log(email, name, password, avatar);
   const handleSublmit = (e) => {
     e.preventDefault();
 

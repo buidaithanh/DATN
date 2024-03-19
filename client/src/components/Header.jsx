@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Header.scss";
 import { Link } from "react-router-dom";
 import {
@@ -9,13 +9,23 @@ import {
   FaTwitter,
   FaSearch,
   FaCloudUploadAlt,
-  FaAngleDown,
 } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
-import { MdWorkspacePremium } from "react-icons/md";
+import axios from "axios";
+import { server } from "../server";
+import { useSelector } from "react-redux";
 // eslint-disable-next-line react/prop-types
-const Header = ({ currentUser }) => {
-  console.log("user", currentUser);
+const Header = () => {
+  const currentUser = useSelector((state) => state.user.user);
+
+  const [menuActive, setMenuActive] = useState(false);
+
+  const handleMiniPhotoClick = () => {
+    setMenuActive(!menuActive);
+  };
+  const handleLogout = async () => {
+    axios.get(`${server}/user/logout`, { withCredentials: true });
+  };
   return (
     <header>
       {/* <img src={currentUser.avatar} alt="" /> */}
@@ -40,7 +50,10 @@ const Header = ({ currentUser }) => {
         </div>
       </div>
       <div className="middle">
-        <img className="logo" src="/png/DTdoc.png" alt="" />
+        <Link to="/">
+          {" "}
+          <img className="logo" src="/png/DTdoc.png" alt="" />
+        </Link>
         <a href="">
           <CiMenuFries className="iconx2" style={{ color: " #12ab7f" }} />
         </a>
@@ -61,20 +74,79 @@ const Header = ({ currentUser }) => {
             UPLOAD
           </Link>
         </button>
-        <p>Hi {currentUser?.name}</p>
-        {currentUser ? (
-          <img
-            style={{ width: "40px", height: "40px", borderRadius: "50px" }}
-            src={`http://localhost:3003/${currentUser?.avatar}`}
-            alt=""
-          />
-        ) : (
-          <img src="/svg/avatar.svg" alt="" />
-        )}
-
-        <a href="">
-          <FaAngleDown />
-        </a>
+        <p style={{ textTransform: "uppercase", color: "#12AB7F" }}>
+          <span style={{ color: "#FF9900" }}>HI,</span> {currentUser?.name}
+        </p>
+        <div className="user-menu-wrap">
+          <a
+            className="mini-photo-wrapper"
+            href="#"
+            onClick={handleMiniPhotoClick}
+          >
+            {currentUser ? (
+              <img
+                style={{ width: "40px", height: "40px", borderRadius: "50px" }}
+                src={`http://localhost:3003/${currentUser?.avatar}`}
+                alt=""
+              />
+            ) : (
+              <img src="/svg/avatar.svg" alt="" />
+            )}
+          </a>
+          <div className={`menu-container ${menuActive ? "active" : ""}`}>
+            <ul className="user-menu">
+              <li className="user-menu__item">
+                <a className="user-menu-link" href="#">
+                  <img
+                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1604623/trophy.png"
+                    alt="trophy_icon"
+                    width={20}
+                    height={20}
+                  />
+                  <div>Thông tin cá nhân</div>
+                </a>
+              </li>
+              <li className="user-menu__item">
+                <a className="user-menu-link" href="#">
+                  <img
+                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1604623/team.png"
+                    alt="team_icon"
+                    width={20}
+                    height={20}
+                  />
+                  <div>Quản lý tài chính</div>
+                </a>
+              </li>
+              <li className="user-menu__item">
+                <Link to="/manage-docs" className="user-menu-link" href="#">
+                  <img
+                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1604623/book.png"
+                    alt="team_icon"
+                    width={20}
+                    height={20}
+                  />
+                  <div>Quản lý tài liệu</div>
+                </Link>
+              </li>
+              <li className="user-menu__item">
+                <Link
+                  className="user-menu-link"
+                  to="/login"
+                  style={{ color: "#F44336" }}
+                  onClick={handleLogout}
+                >
+                  Đăng xuất
+                </Link>
+              </li>
+              <li className="user-menu__item">
+                <a className="user-menu-link" href="#">
+                  Cài đặt
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/* dropdown-menu  */}
       </div>
       <hr style={{ width: "100%", textAlign: "left", marginLeft: 0 }} />
       <ul className="bottom">

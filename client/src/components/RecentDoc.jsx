@@ -10,7 +10,6 @@ const RecentDoc = ({ data }) => {
     setDocument(data);
   }, [data]);
   const document = documents.slice(0, 9);
-  console.log("document", document);
   return (
     <>
       <div className="container">
@@ -18,29 +17,27 @@ const RecentDoc = ({ data }) => {
         <div className="doc-item-rencent">
           {document.map((doc, i) => {
             return (
-              <>
-                <div className="item" key={i}>
-                  <div className="filename">{doc.title}</div>
-                  <div className="container-item">
-                    <div className="date info">
-                      <img src="../../public/svg/Date.svg" alt="" />
-                      {doc.createdAt}
-                    </div>
-                    <div className="views info">
-                      <img src="../../public/svg/view.svg" alt="" />
-                      {doc.views}
-                    </div>
-                    <div className="user info">
-                      <img src="../../public/svg/user.svg" alt="" />
-                      {doc.uploadBy}
-                    </div>
-                    <div className="download info">
-                      <img src="../../public/svg/download.svg" alt="" />
-                      {doc.downloads}
-                    </div>
+              <div className="item" key={i}>
+                <div className="filename">{doc.title}</div>
+                <div className="container-item">
+                  <div className="date info">
+                    <img src="../../public/svg/Date.svg" alt="" />
+                    {doc.createdAt}
+                  </div>
+                  <div className="views info">
+                    <img src="../../public/svg/view.svg" alt="" />
+                    {doc.views}
+                  </div>
+                  <div className="user info">
+                    <img src="../../public/svg/user.svg" alt="" />
+                    {doc.uploadBy}
+                  </div>
+                  <div className="download info">
+                    <img src="../../public/svg/download.svg" alt="" />
+                    {doc.downloads}
                   </div>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>
@@ -51,29 +48,27 @@ const RecentDoc = ({ data }) => {
         <div className="doc-item-rencent">
           {document.map((doc, i) => {
             return (
-              <>
-                <div className="item">
-                  <div className="filename">cntt nghien cuu khoa hoc</div>
-                  <div className="container-item">
-                    <div className="date info">
-                      <img src="../../public/svg/Date.svg" alt="" />
-                      52/1/2024
-                    </div>
-                    <div className="views info">
-                      <img src="../../public/svg/view.svg" alt="" />
-                      45
-                    </div>
-                    <div className="user info">
-                      <img src="../../public/svg/user.svg" alt="" />
-                      daithanh
-                    </div>
-                    <div className="download info">
-                      <img src="../../public/svg/download.svg" alt="" />
-                      45
-                    </div>
+              <div className="item" key={i}>
+                <div className="filename">cntt nghien cuu khoa hoc</div>
+                <div className="container-item">
+                  <div className="date info">
+                    <img src="../../public/svg/Date.svg" alt="" />
+                    52/1/2024
+                  </div>
+                  <div className="views info">
+                    <img src="../../public/svg/view.svg" alt="" />
+                    45
+                  </div>
+                  <div className="user info">
+                    <img src="../../public/svg/user.svg" alt="" />
+                    daithanh
+                  </div>
+                  <div className="download info">
+                    <img src="../../public/svg/download.svg" alt="" />
+                    45
                   </div>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import ContainerDoc from "../components/ContainerDoc";
 import "../styles/HomePage.scss";
@@ -7,12 +7,21 @@ import { FaArrowRight } from "react-icons/fa";
 import RecentDoc from "../components/RecentDoc";
 import { useSelector } from "react-redux";
 import Chat from "../components/Chat";
+import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
+import Store from "../redux/store";
+import { loadUser } from "../redux/actions/user";
 const HomePage = () => {
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
-  console.log(user);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  console.log("isauthen", isAuthenticated);
+  useEffect(() => {
+    Store.dispatch(loadUser());
+  }, []);
   return (
     <div>
-      <Header currentUser={user} />
+      <Header />
       <div className="slider">
         <div className="content">
           <h2>
@@ -193,6 +202,7 @@ const HomePage = () => {
         <RecentDoc data={documents} />
       </div>
       <Chat />
+      <Footer />
     </div>
   );
 };

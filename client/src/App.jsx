@@ -1,7 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage, SignupPage, ActivationPage } from "./routes/Routes";
-import { HomePage, UploadFile } from "./pages";
+import { HomePage, UploadFile, ManageDocs as UserManageDocs } from "./pages";
+import { AdminViewDoc, ManageDocs } from "./pages/admin";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
@@ -24,6 +25,12 @@ function App() {
           element={<ActivationPage />}
         />
         <Route path="/upload-file" element={<UploadFile />} />
+        <Route path="/manage-docs" element={<UserManageDocs />} />
+        <Route path="/admin/manage-docs" element={<ManageDocs />} />
+        <Route
+          path="/admin/manage-docs/review/:docId"
+          element={<AdminViewDoc />}
+        />
       </Routes>
       <ToastContainer
         position="top-right"
