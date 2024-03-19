@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import "../styles/Profile.scss";
 const Profile = () => {
+  const [textManager, setTextManager] = useState("account")
   return (
     <>
       <Header />
@@ -89,84 +90,138 @@ const Profile = () => {
           </div>
         </div>
         <div className='form-user'>
-          
-            <div className="container">
-              <div className="form-group">
-                <input type="button" value="Tài Khoản" />
-                <input type="button" value="Bảo Mật" />
-                <input type="button" value="Tài Liệu" />
-              </div>
 
-              <div className="form-group">
-                <span className="info-label" 
-                  onClick={()=> alert('Thông tin chung')}
-                >Thông tin chung</span>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="fullname">Full Name:</label>
-                <input type="text" id="fullname" name="fullname" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="dob">Date of Birth:</label>
-                <select id="dob-day" name="dob-day">
-                  <option value="day">Day</option>
-
-                </select>
-                <select id="dob-month" name="dob-month">
-                  <option value="month">Month</option>
-
-                </select>
-                <select id="dob-year" name="dob-year">
-                  <option value="year">Year</option>
-
-                </select>
-              </div>
-              <div className="form-group">
-                <label>Gender:</label>
-                <div className="gender">
-                  <input type="radio" id="male" name="gender" />
-                  <label htmlFor="male">Male</label>
-                </div>
-                <div className="gender">
-                  <input type="radio" id="female" name="gender" />
-                  <label htmlFor="female">Female</label>
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="address">Address:</label>
-                <select id="address" name="address">
-                  <option value="danang">Đà Nẵng</option>
-                  <option value="hanoi">Hà Nội</option>
-                  <option value="hcm">Hồ Chí Minh</option>
-
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="job">Ngành nghề:</label>
-                <select id="job" name="job">
-                  <option value="frontend">Front End</option>
-                  <option value="backend">Back End</option>
-                  <option value="other">Làm Đĩ</option>
-
-                </select>
-              </div>
-              <div className="form-group">
-                <span className="info-label" onClick={()=>alert('Thông tin liên hệ')}>Thông tin liên hệ</span>
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email:</label>
-                <input type="text" id="email" name="email" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">Phone:</label>
-                <input type="text" id="phone" name="phone" />
-              </div>
-              <button className='btn-update'> Cập Nhật </button>
+          <div className="container">
+            <div className="form-group">
+              <input type="button" value="Tài Khoản" onClick={() => setTextManager("account")} />
+              <input type="button" value="Bảo Mật" onClick={() => setTextManager("security")} />
+              <input type="button" value="Tài Liệu" onClick={() => setTextManager("docs")} />
             </div>
+
+            {textManager === "account" && (
+              <>
+                <div className="form-group">
+                  <span className="info-label"
+                    onClick={() => alert('Thông tin chung')}
+                  >Thông tin chung</span>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="fullname">Full Name:</label>
+                  <input type="text" id="fullname" name="fullname" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="dob">Date of Birth:</label>
+                  <select id="dob-day" name="dob-day">
+                    <option value="day">Day</option>
+
+                  </select>
+                  <select id="dob-month" name="dob-month">
+                    <option value="month">Month</option>
+
+                  </select>
+                  <select id="dob-year" name="dob-year">
+                    <option value="year">Year</option>
+
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label>Gender:</label>
+                  <div className="gender">
+                    <input type="radio" id="male" name="gender" />
+                    <label htmlFor="male">Male</label>
+                  </div>
+                  <div className="gender">
+                    <input type="radio" id="female" name="gender" />
+                    <label htmlFor="female">Female</label>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="address">Address:</label>
+                  <select id="address" name="address">
+                    <option value="danang">Đà Nẵng</option>
+                    <option value="hanoi">Hà Nội</option>
+                    <option value="hcm">Hồ Chí Minh</option>
+
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="job">Ngành nghề:</label>
+                  <select id="job" name="job">
+                    <option value="frontend">Front End</option>
+                    <option value="backend">Back End</option>
+                    <option value="other">Làm Đĩ</option>
+
+                  </select>
+                </div>
+                <div className="form-group">
+                  <span className="info-label" onClick={() => alert('Thông tin liên hệ')}>Thông tin liên hệ</span>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email:</label>
+                  <input type="text" id="email" name="email" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="phone">Phone:</label>
+                  <input type="text" id="phone" name="phone" />
+                </div>
+                <button className='btn-update'> Cập Nhật </button>
+              </>
+            )}
+            {textManager === "security" && (
+              <>
+                <div className="form-group">
+                  <span className="info-label"
+                    onClick={() => alert('Thay Đổi Mật Khẩu')}
+                  >Thay Đổi Mật Khẩu </span>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="fullname">Mật khẩu hiện tại:</label>
+                  <input type="text" id="fullname" name="fullname" placeholder='**********' />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="fullname">Mật khẩu mới:</label>
+                  <input type="text" id="fullname" name="fullname" placeholder='**********' />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="fullname">Xác nhận mật khẩu mới:</label>
+                  <input type="text" id="fullname" name="fullname" placeholder='**********' />
+                </div>
+                {/* <div className='password-note'>
+                <h1>Yêu cầu mật khẩu </h1>
+                <p>Tối thiểu 8 kí tự </p>
+                <p>Ít nhất 1 số và 1 kí tự </p>
+                <p>Ít nhất 1 chữ viết hoa </p>
+              </div> */}
+                <div>
+                  <button className='btn-security'> Lưu thay đổi </button>
+                  <button className='btn-cancel'> Hủy </button>
+                </div>
+              </>
+
+            )}
+            {textManager === "docs" && (
+              <>
+                <div className="infor-docs">
+                  <h1>Thong tin goi tai tai lieu</h1>
+                  <p>goi tai tai lieu hien tai cua ban:goi 3 thang</p>
+                  <p>Ngay kich hoat</p>
+                  <p>Ngay het han</p>
+                  <p>Gia goi</p>
+                </div>
+                
+                <div className="btn-docs">
+                  <button className='btn-nangcap'> Nang cap goi </button>
+                  <button className='btn-huygoi'> Hủy goi hien tai </button>
+                </div>
+
+              </>
+            )}
           </div>
-          
-        
+        </div>
+
+
       </div>
 
     </>

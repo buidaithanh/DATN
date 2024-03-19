@@ -1,8 +1,12 @@
 .group-profile{
     display: flex;
 }
+.profile-user{
+  background-color: white;
+  border-radius: 10px;
+}
 .container {
-    min-width: 600px;
+    min-width: 1000px;
     background-color: white  ;
     margin: 0 auto;
     padding: 20px;
@@ -60,5 +64,33 @@
     background-color: #007bfe;
     color: white;
     margin: auto;
+    border: none;
+  }
+  .password-note {
+    width: 400px;
+    height: 100px;
+  }
+  .btn-security{
+    width: 140px;
+    height: 40px;
+    background-color: #007bfe;
+    border: none;
+    
+  }
+  .btn-cancel{
+    width: 76px;
+    height: 40px;
+    border: none;
+  }
+  .btn-nangcap{
+    width: 123px;
+    height: 40px;
+    background-color: #551FFF;
+    border: none;
+  }
+  .btn-huygoi{
+    width: 123px;
+    height: 40px;
+    background-color: #FCE4E4;
     border: none;
   }
