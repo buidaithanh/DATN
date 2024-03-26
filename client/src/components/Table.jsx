@@ -5,6 +5,7 @@ import { formatDate } from "../utils/formatDate";
 
 const Table = ({ header, data, editDoc, deleteDoc, viewDoc }) => {
   const dataDoc = data?.docs;
+  console.log("dataDoc", dataDoc);
   return (
     <div className="table-info__docs">
       <div className="table">
@@ -26,14 +27,16 @@ const Table = ({ header, data, editDoc, deleteDoc, viewDoc }) => {
           </div>
         </div>
         <div className="table-content">
-          {dataDoc == undefined ? (
+          {dataDoc.length > 0 ? (
             dataDoc.map((doc, i) => {
               return (
                 <div className="table-row" key={i}>
                   <div className="table-data1">{doc.name}</div>
                   <div className="table-data2">{formatDate(doc.createdAt)}</div>
                   <div className="table-data3">{doc.status}</div>
-                  <div className="table-data4">{doc.price}</div>
+                  <div className="table-data4">
+                    {doc.price === 0 ? "Free" : doc.price}
+                  </div>
                   <div className="table-data5">
                     <FaRegEdit
                       style={{

@@ -1,21 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import ContainerDoc from "../components/ContainerDoc";
 import "../styles/HomePage.scss";
-import { documents } from "../../data/index";
+// import { documents } from "../../data/index";
 import { FaArrowRight } from "react-icons/fa";
 import RecentDoc from "../components/RecentDoc";
 import { useSelector } from "react-redux";
 import Chat from "../components/Chat";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
 import Store from "../redux/store";
 import { loadUser } from "../redux/actions/user";
+import axios from "axios";
+import { server } from "../server";
 const HomePage = () => {
-  const navigate = useNavigate();
-  const user = useSelector((state) => state.user.user);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-  console.log("isauthen", isAuthenticated);
+  const [documentsTopViews, setDocumentsTopViews] = useState([]);
+  const [documents, setDocuments] = useState([]);
+  useEffect(() => {
+    const getTopViewedDocuments = async () => {
+      await axios.get(`${server}/doc/top-viewed-documents`).then((res) => {
+        setDocumentsTopViews(res.data.getTopViewedDocuments);
+      });
+    };
+    getTopViewedDocuments();
+  }, []);
+  console.log(documentsTopViews);
   useEffect(() => {
     Store.dispatch(loadUser());
   }, []);
@@ -116,7 +125,6 @@ const HomePage = () => {
             style={{
               height: "2px",
               width: "26%",
-
               textAlign: "left",
               marginLeft: 0,
               marginRight: 10,
@@ -124,7 +132,7 @@ const HomePage = () => {
             }}
           />
         </div>
-        <ContainerDoc data={documents} />
+        <ContainerDoc data={documentsTopViews} />
         <div style={{ textAlign: "right" }}>
           <a
             style={{ textDecoration: "none", color: "#ed553b" }}
@@ -161,7 +169,7 @@ const HomePage = () => {
             }}
           />
         </div>
-        <ContainerDoc data={documents} />
+        <ContainerDoc data={documentsTopViews} />
         <div style={{ textAlign: "right" }}>
           <a
             style={{ textDecoration: "none", color: "#ed553b" }}
@@ -199,7 +207,7 @@ const HomePage = () => {
             }}
           />
         </div>
-        <RecentDoc data={documents} />
+        <RecentDoc data={documentsTopViews} />
       </div>
       <Chat />
       <Footer />

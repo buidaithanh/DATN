@@ -23,7 +23,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 const AdminViewDoc = () => {
   const navigate = useNavigate();
   const { docId } = useParams();
-  console.log("docId", docId);
   const [currentDoc, setCurrentDoc] = useState({});
   const [numPages, setNumPages] = useState();
   const [pageNumber, setPageNumber] = useState(1);
@@ -34,7 +33,7 @@ const AdminViewDoc = () => {
       setCurrentDoc(data.doc[0]);
     };
     getDocCurrent();
-  }, []);
+  }, [docId]);
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
   }
@@ -48,7 +47,9 @@ const AdminViewDoc = () => {
   }, 4000);
   const handleApproveDoc = async () => {
     try {
-      await axiosInstance.put(`${server}/doc/approve-docs/${docId}`);
+      await axiosInstance.put(`${server}/doc/approve-docs/${docId}`, {
+        firstImage,
+      });
 
       toast.success("duyet thanh cong");
       navigate("/admin/manage-docs");
@@ -110,7 +111,14 @@ const AdminViewDoc = () => {
               )}
               <div className="doc-explorer">
                 {firstImage ? (
-                  <img style={{ width: "200px" }} src={firstImage} alt="" />
+                  <img
+                    style={{
+                      width: "200px",
+                      objectFit: "cover",
+                    }}
+                    src={firstImage}
+                    alt=""
+                  />
                 ) : (
                   "loading..."
                 )}
@@ -239,6 +247,7 @@ const Container = styled.div`
       width: 784px !important;
       height: 1110px !important;
       border: 20px solid #12ab7f;
+      object-fit: contain;
       border-top: none;
     }
   }

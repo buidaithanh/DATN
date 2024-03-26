@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Header.scss";
 import { Link } from "react-router-dom";
 import {
@@ -14,6 +14,7 @@ import { CiMenuFries } from "react-icons/ci";
 import axios from "axios";
 import { server } from "../server";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const Header = () => {
   const currentUser = useSelector((state) => state.user.user);
@@ -52,25 +53,37 @@ const Header = () => {
       <div className="middle">
         <Link to="/">
           {" "}
-          <img className="logo" src="/png/DTdoc.png" alt="" />
+          <img
+            style={{ objectFit: "contain", width: 80 }}
+            className="logo"
+            src="/png/DTdoc.png"
+            alt=""
+          />
         </Link>
         <a href="">
           <CiMenuFries className="iconx2" style={{ color: " #12ab7f" }} />
         </a>
         <div className="search-docs">
           <input type="text" placeholder="Tim kiem tai lieu..." />
-          <FaSearch className="ab" />
+          <FaSearch
+            className="ab"
+            style={{ color: "#888888", cursor: "pointer" }}
+          />
         </div>
         <a href="" className="upgrade dflex">
           <h3 className="mr">UPGRAGE</h3>
           <img src="../../public/svg/upgrade.svg" alt="" className="iconx2" />
         </a>
         <button className="upload">
-          <FaCloudUploadAlt className="mr iconx2" />
           <Link
-            style={{ color: "white", textDecoration: "none" }}
+            style={{
+              color: "white",
+              textDecoration: "none",
+              alignSelf: "center",
+            }}
             to="/upload-file"
           >
+            <FaCloudUploadAlt className="mr iconx2" />
             UPLOAD
           </Link>
         </button>

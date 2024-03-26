@@ -36,7 +36,6 @@ module.exports.createUser = async (req, res, next) => {
       return next(new ErrorHandler(error.message, 500));
     }
   } catch (error) {
-    console.log("loi: ", error);
     return next(new ErrorHandler(error.message, 400));
   }
 };
@@ -110,6 +109,23 @@ module.exports.getUser = async (req, res, next) => {
     });
   } catch (error) {
     return next(new ErrorHandler(error.message, 500));
+  }
+};
+// get all users
+module.exports.getAllUsers = async (req, res, next) => {
+  const { status } = req.query;
+  let filter = {};
+
+  status === "All" ? "" : (filter.status = status);
+  try {
+    const users = await User.find(filter).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      users,
+    });
+  } catch (error) {
+    return next(new ErrorHandler(error, 400));
   }
 };
 // get user info

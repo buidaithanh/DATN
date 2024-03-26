@@ -1,13 +1,23 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage, SignupPage, ActivationPage } from "./routes/Routes";
-import { HomePage, UploadFile, ManageDocs as UserManageDocs } from "./pages";
-import { AdminViewDoc, ManageDocs } from "./pages/admin";
-import { ToastContainer, toast } from "react-toastify";
+import {
+  AboutUs,
+  DocDetail,
+  HomePage,
+  UploadFile,
+  ManageDocs as UserManageDocs,
+} from "./pages";
+import {
+  AdminViewDoc,
+  ManageDocs,
+  ManageUser,
+  Chat,
+  Payment,
+} from "./pages/admin";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
-import axios from "axios";
-import { server } from "./server";
 import Store from "./redux/store";
 import { loadUser } from "./redux/actions/user";
 function App() {
@@ -19,14 +29,19 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/document/:docId" element={<DocDetail />} />
         <Route path="/sign-up" element={<SignupPage />} />
         <Route
           path="/activation/:activation_token"
           element={<ActivationPage />}
         />
         <Route path="/upload-file" element={<UploadFile />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/manage-docs" element={<UserManageDocs />} />
         <Route path="/admin/manage-docs" element={<ManageDocs />} />
+        <Route path="/admin/manage-user" element={<ManageUser />} />
+        <Route path="/admin/manage-chat" element={<Chat />} />
+        <Route path="/admin/manage-payment" element={<Payment />} />
         <Route
           path="/admin/manage-docs/review/:docId"
           element={<AdminViewDoc />}

@@ -9,7 +9,6 @@ import { server } from "../../server";
 import { formatDate } from "../../utils/formatDate";
 import { useNavigate } from "react-router-dom";
 const TableAdmin = ({ header, data }) => {
-  console.log("data", data == undefined);
   const navigate = useNavigate();
   const editDoc = () => {};
   const viewDoc = (id) => {
@@ -40,16 +39,22 @@ const TableAdmin = ({ header, data }) => {
         </div>
         <div className="admin__table-content">
           {data.length > 0 ? (
-            data.map((doc, i) => {
+            data.map((d, i) => {
               return (
                 <div className="admin__table-row" key={i}>
-                  <div className="admin__table-data1">{doc.name}</div>
-                  <div className="admin__table-data2">{doc.nameUser}</div>
-                  <div className="admin__table-data3">{doc.price}đ</div>
-                  <div className="admin__table-data4">
-                    {formatDate(doc.createdAt)}
+                  <div className="admin__table-data1">{d.name}</div>
+                  <div className="admin__table-data2">
+                    {d.nameUser || "082452168"}
                   </div>
-                  <div className="admin__table-data5">{doc.status}</div>
+                  <div className="admin__table-data3">
+                    {d.price || d.price == 0 ? d.price : "saving"}
+                  </div>
+                  <div className="admin__table-data4">
+                    {formatDate(d.createdAt)}
+                  </div>
+                  <div className="admin__table-data5">
+                    {d.status ? d.status : "active"}
+                  </div>
                   <div className="admin__table-data6">
                     <FaRegEdit
                       style={{
@@ -71,7 +76,7 @@ const TableAdmin = ({ header, data }) => {
                         fontSize: "20px",
                         verticalAlign: "middle",
                       }}
-                      onClick={() => viewDoc(doc._id)}
+                      onClick={() => viewDoc(d._id)}
                     />
                   </div>
                 </div>
@@ -119,12 +124,14 @@ const Container = styled.div`
   .admin__table-data1 {
     padding-left: 40px;
     box-sizing: border-box;
-  }
-  .admin__table-data1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: #5d596c;
     font-weight: 600;
     font-size: medium;
   }
+
   .admin__table-data2 {
     color: #888888;
     font-weight: 400;

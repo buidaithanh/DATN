@@ -19,7 +19,6 @@ module.exports.createDoc = async (req, res, next) => {
     const filename = req.file.filename;
     const fileUrl = path.join(filename);
     const userUpload = await User.findById(uploadedBy);
-    console.log(userUpload);
     const newDocument = new Document({
       name,
       category,
@@ -45,7 +44,6 @@ module.exports.createDoc = async (req, res, next) => {
 // get all docs
 module.exports.getAllDocs = async (req, res, next) => {
   const { status } = req.query;
-  console.log(status);
   let filter = {};
 
   status === "All" ? "" : (filter.status = status);
@@ -75,6 +73,7 @@ module.exports.getDoc = async (req, res, next) => {
     return next(new ErrorHandler(error, 400));
   }
 };
+
 // get all docs of a user
 module.exports.getAllDocsOfUser = async (req, res, next) => {
   try {
@@ -93,14 +92,46 @@ module.exports.getAllDocsOfUser = async (req, res, next) => {
 module.exports.approveDocs = async (req, res, next) => {
   try {
     const docId = req.params.docId;
+    const { firstImage } = req.body;
     await Document.findOneAndUpdate(
       { _id: docId, status: "Processing" },
-      { $set: { status: "Approved" } },
+      { $set: { status: "Approved", thumbnail: firstImage } },
       { new: true }
     );
     return res
       .status(200)
       .json({ success: true, message: "updated doc successfully" });
+  } catch (error) {
+    return next(new ErrorHandler(error, 400));
+  }
+};
+//get Top Viewed Documents ThisWeek
+module.exports.getTopViewedDocumentsThisWeek = async (req, res, next) => {
+  try {
+    const startOfWeek = new Date();
+    startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay());
+    startOfWeek.setHours(0, 0, 0, 0);
+    const endOfWeek = new Date(startOfWeek.getTime());
+    endOfWeek.setDate(endOfWeek.getDate() + 6);
+    endOfWeek.setHours(23, 59, 59, 999);
+    const getTopViewedDocuments = await Document.aggregate([
+      {
+        $match: {
+          $and: [
+            // {
+            //   $or: [
+            //     { createdAt: { $gte: startOfWeek, $lte: endOfWeek } },
+            //     { uploadedBy: { $gte: startOfWeek, $lte: endOfWeek } },
+            //   ],
+            // },
+            { status: "Approved" },
+          ],
+        },
+      },
+      { $sort: { views: -1 } },
+      { $limit: 12 },
+    ]);
+    return res.status(200).json({ success: true, getTopViewedDocuments });
   } catch (error) {
     return next(new ErrorHandler(error, 400));
   }
