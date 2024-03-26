@@ -9,9 +9,10 @@
   margin-bottom: 20px;
 }
 
-.kinhte {
+.kinhte,
+.cntt {
   display: flex;
-  width: 300px;
+  width: 200px;
   height: 330px;
   color: white;
   justify-content: center;
@@ -19,27 +20,26 @@
   background-color: #0a1d56;
 }
 .cntt {
-  display: flex;
-  width: 300px;
-  height: 330px;
-  color: white;
-  justify-content: center;
-  align-items: center;
   background-color: #37b5b6;
 }
 .doc-item-rencent {
-  margin-left: 40px;
+  margin: 20px 0 0 40px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 80%;
   .item {
-    width: 30%;
+    width: 23%;
+    margin: 0 5px;
     display: flex;
     flex-direction: column;
     .filename {
       cursor: pointer;
-      font-weight: bold;
-      font-size: 18px;
+      font-weight: 600;
+      font-size: 15px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     .container-item {
       display: flex;

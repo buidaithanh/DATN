@@ -179,7 +179,15 @@ const UploadFile = () => {
                     >
                       Xac nhan thong tin
                     </p>
-                    <h4 style={{ margin: "0" }}>
+                    <h4
+                      style={{
+                        margin: "0",
+                        width: "300px",
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
                       Ten file: {selectedFile?.name}
                     </h4>
 

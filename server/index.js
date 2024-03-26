@@ -30,12 +30,12 @@ app.use(
   })
 );
 app.use("/", express.static("uploads"));
-app.use(express.json());
+app.use(express.json({ limit: "70mb" }));
 app.use(cookieParser());
 app.use(
   bodyParser.urlencoded({
     extended: true,
-    limit: "50mb",
+    limit: "70mb",
   })
 );
 app.use("/api/v1/user", userRoute);

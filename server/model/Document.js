@@ -62,6 +62,9 @@ const documentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  thumbnail: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now(),

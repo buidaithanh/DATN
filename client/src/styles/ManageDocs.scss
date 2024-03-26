@@ -127,6 +127,9 @@
 .table-data1 {
   font-weight: 600;
   font-size: medium;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .table-data2 {
   color: #888888;

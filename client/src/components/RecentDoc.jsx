@@ -6,6 +6,18 @@ import "../styles/RecentDoc.scss";
 // eslint-disable-next-line react/prop-types
 const RecentDoc = ({ data }) => {
   const [documents, setDocument] = useState([]);
+  const formatDate = (dateTo) => {
+    const date = new Date(dateTo);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    const formattedDate = `${day < 10 ? "0" + day : day}/${
+      month < 10 ? "0" + month : month
+    }/${year}`;
+
+    return formattedDate;
+  };
   useEffect(() => {
     setDocument(data);
   }, [data]);
@@ -18,11 +30,11 @@ const RecentDoc = ({ data }) => {
           {document.map((doc, i) => {
             return (
               <div className="item" key={i}>
-                <div className="filename">{doc.title}</div>
+                <div className="filename">{doc.name}</div>
                 <div className="container-item">
                   <div className="date info">
                     <img src="../../public/svg/Date.svg" alt="" />
-                    {doc.createdAt}
+                    {formatDate(doc.createdAt)}
                   </div>
                   <div className="views info">
                     <img src="../../public/svg/view.svg" alt="" />
@@ -30,7 +42,7 @@ const RecentDoc = ({ data }) => {
                   </div>
                   <div className="user info">
                     <img src="../../public/svg/user.svg" alt="" />
-                    {doc.uploadBy}
+                    {doc.nameUser}
                   </div>
                   <div className="download info">
                     <img src="../../public/svg/download.svg" alt="" />
@@ -49,23 +61,23 @@ const RecentDoc = ({ data }) => {
           {document.map((doc, i) => {
             return (
               <div className="item" key={i}>
-                <div className="filename">cntt nghien cuu khoa hoc</div>
+                <div className="filename">{doc.name}</div>
                 <div className="container-item">
                   <div className="date info">
                     <img src="../../public/svg/Date.svg" alt="" />
-                    52/1/2024
+                    {formatDate(doc.createdAt)}
                   </div>
                   <div className="views info">
                     <img src="../../public/svg/view.svg" alt="" />
-                    45
+                    {doc.views}
                   </div>
                   <div className="user info">
                     <img src="../../public/svg/user.svg" alt="" />
-                    daithanh
+                    {doc.nameUser}
                   </div>
                   <div className="download info">
                     <img src="../../public/svg/download.svg" alt="" />
-                    45
+                    {doc.downloads}
                   </div>
                 </div>
               </div>
