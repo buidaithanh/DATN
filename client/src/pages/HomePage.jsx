@@ -6,7 +6,7 @@ import "../styles/HomePage.scss";
 import { FaArrowRight } from "react-icons/fa";
 import RecentDoc from "../components/RecentDoc";
 import { useSelector } from "react-redux";
-import Chat from "../components/Chat";
+import ChatContainer from "../components/ChatContainer";
 import Footer from "../components/Footer";
 import Store from "../redux/store";
 import { loadUser } from "../redux/actions/user";
@@ -209,7 +209,7 @@ const HomePage = () => {
         </div>
         <RecentDoc data={documentsTopViews} />
       </div>
-      <Chat />
+      <ChatContainer />
       <Footer />
     </div>
   );
